@@ -139,5 +139,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 啟用打字效果
-  default_events.typingEffect(".typing-text", 'print("Hello, Yushun!")', 150);
+  default_events.typingEffect(".typing-text", 'print("Hello, Yushun!")', 50);
 });

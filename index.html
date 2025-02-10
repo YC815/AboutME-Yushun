@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-hant">
   <head>
+    <script src="https://cdn.jsdelivr.net/npm/typewriter-effect/dist/core.js"></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
@@ -194,10 +195,44 @@
   </head>
 
   <body id="body" :animation="fade-in">
-    <!-- TODO: 讓他放在背景區塊-->
-    <!-- <div class="typing-container">
-      <span class="typing-text"></span>
-    </div> -->
+    <div id="typewriter" class="file-font"></div>
+    <script src="https://cdn.jsdelivr.net/npm/typewriter-effect/dist/core.js"></script>
+    <script>
+      const app = document.getElementById("typewriter");
+
+      const typewriter = new Typewriter(app, {
+        loop: true,
+        delay: 75,
+      });
+
+      typewriter
+        .typeString('my_name = "Yushun"')
+        .pauseFor(2500)
+        .deleteAll()
+        .typeString('print("Welcome!")')
+        .pauseFor(2500)
+        .deleteAll()
+        .typeString('life = ["code", "debug", "learn"]')
+        .pauseFor(2500)
+        .deleteAll()
+        .start();
+    </script>
+    <style>
+      #typewriter {
+        position: fixed;
+        bottom: 150px; /* 距離底部 50px */
+        left: 50%;
+        transform: translateX(-50%); /* 水平居中 */
+        font-size: 8.2rem; /* 調整文字大小 */
+        color: #d8d8d8; /* 文字顏色 */
+        z-index: -1; /* 放在背景層 */
+        pointer-events: none; /* 禁止滑鼠點擊影響 */
+        white-space: nowrap; /* 禁止換行 */
+        overflow: hidden; /* 隱藏溢出文字 */
+        text-align: center; /* 確保文字置中 */
+      }
+    </style>
+
     <nav>
       <section>
         <section class="left">
