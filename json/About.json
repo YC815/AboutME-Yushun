@@ -1,0 +1,29 @@
+[
+    {
+        "key": "about",
+        "type": "document",
+        "title": {
+            "zh": "自我介紹",
+            "en": "Self-Introduction"
+        },
+        "target": "about.md"
+    },
+    {
+        "key": "technologies_used",
+        "type": "document",
+        "title": {
+            "zh": "使用技術",
+            "en": "Technologies Used"
+        },
+        "target": "tool.md"
+    },
+    {
+        "key": "development",
+        "type": "document",
+        "title": {
+            "zh": "開發模式",
+            "en": "Development"
+        },
+        "target": "development.md"
+    }
+]

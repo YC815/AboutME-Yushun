@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="robots" content="index, follow" />
+    <!-- 字體 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- SEO 標題與描述 -->
+    <title>Python / Web 開發 - 陳友駿 Yushun Chen</title>
+    <meta name="title" content="Python / Web 開發 - 陳友駿" />
+    <meta
+      name="description"
+      content="Python腳本設計以及網頁建構專長，有多年的網頁程式設計及兒童程式教育經驗。津美妙後台全端開發者。"
+    />
+    <meta
+      name="keywords"
+      content="Python, HTML, JavaScript, Full-Stack Development, Minecraft, Children's Education, Life-Oriented Projects, Yushun Chen, 全端開發, Minecraft, 兒童教育, 生活化專案, 陳友駿"
+    />
+    <meta name="author" content="陳友駿 Yushun" />
+    <link rel="author" href="https://yushun.chen.zone/" />
+    <link rel="canonical" href="https://yushun.chen.zone/" />
+
+    <!-- Favicon -->
+    <!-- TODO: 製作logo -->
+    <link rel="icon" href="./static/image/logo.png" type="image/x-icon" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Python / Web 開發 - 陳友駿" />
+    <meta
+      property="og:description"
+      content="Python腳本設計以及網頁建構專長，有多年的網頁程式設計及兒童程式教育經驗。津美妙後台全端開發者。"
+    />
+    <meta property="og:image" content="./image/cover.jpg" />
+    <meta property="og:url" content="https://yushun.chen.chen/" />
+    <!-- TODO: fixt it -->
+    <meta property="og:site_name" content="QuickUI" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="zh_TW" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Python / Web 開發 - 陳友駿" />
+    <meta
+      property="twitter:description"
+      content="Python腳本設計以及網頁建構專長，有多年的網頁程式設計及兒童程式教育經驗。津美妙後台全端開發者。"
+    />
+    <meta property="twitter:image" content="./image/cover.jpg" />
+    <meta property="twitter:url" content="https://yushun.chen.zone/" />
+
+    <!-- Google Verification -->
+    <!-- TODO:
+     <meta
+      name="google-site-verification"
+      content="YQQ2f6AchR8dcb55Az2BYd_mw4TrP0J1RApD-v2v65Y"
+    /> -->
+
+    <!-- Google Analytics -->
+    <!-- TODO:
+     <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-L5VYEZPVXX"
+    ></script> -->
+    <!-- TODO:
+     <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-L5VYEZPVXX");
+    </script> -->
+
+    <!-- Preload and Preconnect -->
+    <!-- link -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"
+      as="style"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css"
+    />
+
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/@pardnchiu/quickui@0.6.2/dist/QuickUI.js"
+      as="script"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/@pardnchiu/quickui@0.6.2/dist/QuickUI.js"
+      copyright="Pardn Ltd"
+    ></script>
+
+    <link
+      rel="preload"
+      href="https://cdn.jsdelivr.net/npm/@pardnchiu/nanomd@1.8.5/dist/NanoMD.js"
+      as="script"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@pardnchiu/nanomd@1.8.5/dist/NanoMD.js"></script>
+
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swaps"
+      as="style"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      as="style"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Local Resources -->
+    <link rel="stylesheet" href="./css/index.css" />
+    <script src="./js/index.js"></script>
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+      {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": "Python / Web 開發 - 陳友駿",
+          "description": ""Python腳本設計以及網頁建構專長，有多年的網頁程式設計及兒童程式教育經驗。津美妙後台全端開發者。"",
+          "url": "https://yushun.chen.zone/",
+          "creator": {
+              "@type": "Person",
+              "name": "陳友駿",
+              "url": "https://yushun.chen.zone/",
+            },
+          "image": "./static/image/website.jpg",
+          "mainEntity": [
+              {
+                  "@type": "WebPageElement",
+                  "name": "關於我 - 陳友駿",
+                  "url": "https://yushun.chen.zone/",
+                },
+              {
+                  "@type": "WebPageElement",
+                  "name": "關於我 - 陳友駿",
+                  "url": "https://yushun.chen.zone/index.html?folder=about"
+              },
+              {
+                  "@type": "WebPageElement",
+                  "name": "使用技術 - 陳友駿",
+                  "url": "https://yushun.chen.zone/index.html?folder=about&target=technologies_used"
+              },
+              {
+                  "@type": "WebPageElement",
+                  "name": "開發模式 - 陳友駿",
+                  "url": "https://yushun.chen.zone/index.html?folder=about&target=development"
+              },
+              {
+                  "@type": "WebPageElement",
+                  "name": "常見問題 - 陳友駿",
+                  "url": "https://yushun.chen.zone/index.html?folder=about&target=faq"
+              },
+              {
+                  "@type": "WebPageElement",
+                  "name": "Python - 陳友駿",
+                  "url": "https://yushun.chen.zone/index.html?folder=script"
+              },
+              {
+                  "@type": "WebPageElement",
+                  "name": "Web - 陳友駿",
+                  "url": "https://yushun.chen.zone/index.html?folder=web"
+              }
+          ]
+      }
+    </script>
+  </head>
+
+  <body id="body" :animation="fade-in">
+    <!-- TODO: 讓他放在背景區塊-->
+    <!-- <div class="typing-container">
+      <span class="typing-text"></span>
+    </div> -->
+    <nav>
+      <section>
+        <section class="left">
+          <strong>YC<span>ode</span></strong>
+        </section>
+        <section class="center">
+          <p id="time-time">GMT--<span>/</span>--:--:--</p>
+          <p id="time-date">--- --/--/--</p>
+        </section>
+        <section class="right">
+          <a class="theme-toggle-btn" href="#" aria-label="切換主題">
+            <i class="fa-solid fa-sun"></i>
+          </a>
+
+          <i>/</i>
+          <a :href="./index.html?lang={{ change }}">
+            <i class="fa-solid fa-globe"></i>
+          </a>
+        </section>
+      </section>
+    </nav>
+    <section class="center">
+      <section>
+        <section id="folder-list" class="tab folder-list">
+          <button
+            class="folder"
+            @click="open"
+            data-tag="about"
+            :data-title="i18n.about"
+          >
+            <div>
+              <div></div>
+            </div>
+            <strong class="file-font">About</strong>
+          </button>
+          <button
+            class="folder"
+            @click="open"
+            data-tag="script"
+            data-title="Script"
+          >
+            <div>
+              <div></div>
+            </div>
+            <strong class="file-font">Script</strong>
+          </button>
+          <button class="folder" @click="open" data-tag="web" data-title="Web">
+            <div>
+              <div></div>
+            </div>
+            <strong class="file-font">Web</strong>
+          </button>
+        </section>
+        <section class="body">
+          <section>
+            <span :html="i18n.hello"></span>
+            <h1>{{ i18n.name }}</h1>
+            <h2 class="custom-font">{{ i18n.title }}</h2>
+            <p :html="i18n.content"></p>
+          </section>
+          <section>
+            <section>
+              <strong>{{ i18n.social }}</strong>
+              <a href="https://github.com/YC815" target="_blank"
+                ><i class="fa-brands fa-github"></i>GITHUB</a
+              >
+              <a href="https://www.instagram.com/yc815mc/" target="_blank"
+                ><i class="fa-brands fa-instagram"></i>INSTAGRAM</a
+              >
+            </section>
+            <section>
+              <strong>{{ i18n.contact }}</strong>
+              <a href="mailto:yushun@chen.zone"
+                ><i class="fa-regular fa-envelope"></i>YUSHUN@CHEN.ZONE</a
+              >
+              <a href="tel:+886906781585"
+                ><i class="fa-solid fa-mobile-screen-button"></i
+                >+886-906-781-585</a
+              >
+            </section>
+            <section>
+              <p>
+                © 2025, Yushun Chen.<br /><span
+                  >Style inspired by
+                  <a href="https://whoami.craftsmanjohn.com" target="_blank"
+                    >grey/jnr</a
+                  >
+                  <span>and</span>
+                  <a href="https://pardn.io/" target="_blank"
+                    >Pardn/CHIU</a
+                  ></span
+                >
+              </p>
+            </section>
+          </section>
+        </section>
+        <footer>
+          <p>
+            © 2025, Yushun Chen.<br /><span
+              >Style inspired by
+              <a href="https://whoami.craftsmanjohn.com" target="_blank"
+                >grey/jnr</a
+              >
+              <span>and</span>
+              <a href="https://pardn.io/" target="_blank">Pardn/CHIU</a></span
+            >
+          </p>
+        </footer>
+      </section>
+    </section>
+    <section id="pop-folder" class="pop-folder" data-show="0">
+      <nav>
+        <strong id="pop-folder-title" class="big-file-font">Web</strong>
+        <section>
+          <button @click="close">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </button>
+        </section>
+      </nav>
+      <section id="pop-folder-body "></section>
+    </section>
+    <section id="pop-doc" class="pop-doc" data-show="0">
+      <nav>
+        <strong id="pop-doc-title "></strong>
+        <section>
+          <button @click="close_doc">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </button>
+        </section>
+      </nav>
+      <section id="pop-doc-body"></section>
+    </section>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", async (_) => {
+      const url = new URL(location.href);
+      const currentLanguage = navigator.language || navigator.userLanguage;
+      const folder = (url.searchParams.get("folder") || "")
+        .trim()
+        .toLocaleLowerCase();
+      const target = (url.searchParams.get("target") || "")
+        .trim()
+        .toLocaleLowerCase();
+      let lang = url.searchParams.get("lang");
+      let isZh = /^zh/i.test(currentLanguage);
+
+      if (lang != null) {
+        isZh = /^zh/i.test(lang);
+      }
+
+      lang = isZh ? "zh" : "en";
+
+      let about, Script, Web, day, editor;
+
+      await getData("./json/About.json", (data) => {
+        about = JSON.parse(data);
+      });
+
+      await getData("./json/Script.json", (data) => {
+        Script = JSON.parse(data);
+      });
+
+      await getData("./json/Web.json", (data) => {
+        Web = JSON.parse(data);
+      });
+
+      await getData("./json/day.json", (data) => {
+        day = JSON.parse(data);
+      });
+
+      page = new QUI({
+        id: "body",
+        i18n: {
+          zh: "./i18n/zh.json",
+          en: "./i18n/en.json",
+        },
+        i18nLang: isZh ? "zh" : "en",
+        data: {
+          lang: isZh ? "zh" : "en",
+          change: isZh ? "en" : "zh",
+          now: Math.floor(Date.now() / 1000),
+          about: about,
+          script: Script,
+          web: Web,
+        },
+        event: {
+          open: (e) => {
+            const _this = e.target;
+            const tag = _this.dataset.tag;
+            const title = _this.dataset.title;
+            const parent = _this.parentElement;
+            const index = Array.prototype.indexOf.call(parent.children, _this);
+
+            if (page.data[tag] == null) {
+              return;
+            }
+
+            if (parseInt(parent.dataset.index) === index) {
+              return;
+            }
+
+            parent.dataset.index = index;
+
+            setDoc();
+            setFolder({
+              title: title,
+              folder: tag,
+            });
+          },
+          close: (e) => {
+            setFolder();
+          },
+          close_doc: (e) => {
+            setDoc();
+          },
+        },
+        when: {
+          rendered: (_) => {
+            setTime();
+            setDate();
+
+            setInterval((_) => {
+              setTime();
+            }, 1000);
+
+            editor = new MDViewer({
+              id: "pop-doc-body",
+              style: {
+                fill: 0,
+              },
+            });
+            document.getElementById("pop-doc-body").style.paddingTop = "30px";
+
+            if (folder.length < 1) {
+              return;
+            }
+
+            let btn = document.querySelector(`[data-tag="${folder}"]`);
+
+            if (btn == null) {
+              return;
+            }
+
+            btn.click();
+
+            if (target.length < 1) {
+              return;
+            }
+
+            btn = document.querySelector(`[data-doc="${target}"]`);
+
+            if (btn == null) {
+              return;
+            }
+
+            btn.click();
+          },
+        },
+      });
+
+      let oldDate = new Date().getDate();
+
+      async function getData(path, callback) {
+        await fetch(path)
+          .then((response) => response.text())
+          .then((data) => {
+            callback(data);
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+      }
+
+      function setTime() {
+        const domTime = document.getElementById("time-time");
+        const date = new Date();
+
+        const offset = 8;
+        const utc = date.getTime() + date.getTimezoneOffset() * 60000;
+        const localDate = new Date(utc + offset * 3600000);
+
+        const h = ("0" + localDate.getHours()).slice(-2);
+        const m = ("0" + localDate.getMinutes()).slice(-2);
+        const s = ("0" + localDate.getSeconds()).slice(-2);
+
+        domTime.innerHTML =
+          "GMT+" + offset + "<span>/</span>" + h + ":" + m + ":" + s;
+
+        // 換天
+        if (oldDate < localDate.getDate()) {
+          setDate();
+        }
+      }
+
+      // * 禁用聯絡方式時間判斷 (後續考慮)
+      function setLocalTime() {
+        const domTime = document.getElementById("time-time");
+        const date = new Date();
+        const offset = (date.getTimezoneOffset() / 60) * -1;
+        const h = ("0" + date.getHours()).slice(-2);
+        const m = ("0" + date.getMinutes()).slice(-2);
+        const s = ("0" + date.getSeconds()).slice(-2);
+      }
+
+      function setDate() {
+        const domDate = document.getElementById("time-date");
+        const date = new Date();
+        const dayText = day[date.getDay()][lang];
+        const d = ("0" + date.getDate()).slice(-2);
+        const m = ("0" + (date.getMonth() + 1)).slice(-2);
+        const y = String(date.getFullYear()).slice(-2);
+
+        domDate.innerHTML =
+          "<span>" + dayText + "</span>" + d + "/" + m + "/" + y;
+      }
+
+      function setFolder(body) {
+        const domFolderList = document.getElementById("folder-list");
+        const domPopFolder = document.getElementById("pop-folder");
+        const domPopFolderTitle = document.getElementById("pop-folder-title");
+        const domPopFolderBody = document.getElementById("pop-folder-body");
+        const isShow = parseInt(domPopFolder.dataset.show) === 1;
+
+        if (body == null) {
+          domFolderList.dataset.index = null;
+          domPopFolder.dataset.show = 0;
+          url.searchParams.delete("folder");
+          window.history.replaceState({}, document.title, url.href);
+          return;
+        }
+
+        domPopFolder.dataset.show = 1;
+        domPopFolderTitle.innerText = body.title;
+        url.searchParams.set("folder", body.folder);
+        window.history.replaceState({}, document.title, url.href);
+
+        const temp = document.createDocumentFragment();
+
+        for (let e of page.data[body.folder]) {
+          temp.appendChild(e.type === "document" ? setButton(e) : setLink(e));
+        }
+
+        domPopFolderBody.replaceChildren(temp);
+      }
+
+      function setDoc(body) {
+        const domPopDoc = document.getElementById("pop-doc");
+        const domPopDocTitle = document.getElementById("pop-doc-title");
+        const isShow = parseInt(domPopDoc.dataset.show) === 1;
+
+        if (body == null) {
+          domPopDoc.dataset.show = 0;
+          domPopDocTitle.innerText = "";
+          editor.init("");
+          url.searchParams.delete("target");
+          window.history.replaceState({}, document.title, url.href);
+          return;
+        }
+
+        domPopDoc.dataset.show = 1;
+        domPopDocTitle.innerText = body.title;
+        editor.init(body.pre);
+        url.searchParams.set("target", body.tag);
+        window.history.replaceState({}, document.title, url.href);
+      }
+
+      function setButton(e) {
+        const button = document.createElement("button");
+        const img = document.createElement("img");
+        const strong = document.createElement("strong");
+        const p = document.createElement("p");
+
+        button.dataset.doc = e.key;
+        button.appendChild(img);
+        button.appendChild(strong);
+
+        button.onclick = async (_) => {
+          let pre = "";
+
+          await getData("./md/" + lang + "/" + e.target, (data) => {
+            pre = data;
+          });
+
+          setDoc({
+            title: e.title[lang],
+            pre: pre,
+            tag: e.key,
+          });
+        };
+
+        img.src = "./image/document.png";
+        strong.innerText = e.title[lang];
+
+        return button;
+      }
+
+      function setLink(e) {
+        const a = document.createElement("a");
+        const img = document.createElement("img");
+        const strong = document.createElement("strong");
+        const p = document.createElement("p");
+
+        a.appendChild(img);
+        a.appendChild(strong);
+
+        if ((e.subtitle[lang] ?? "").trim().length > 0) {
+          a.appendChild(p);
+          p.innerText = e.subtitle[lang];
+        }
+
+        a.href = e.href;
+        a.target = "_blank";
+
+        img.src = e.image;
+        strong.innerText = e.title[lang];
+
+        return a;
+      }
+    });
+  </script>
+</html>

@@ -1,0 +1,132 @@
+[
+    {
+        "type": "link",
+        "title": {
+            "zh": "津美妙後台系統",
+            "en": "JMM Backend\nSystem"
+        },
+        "subtitle": {
+            "zh": "管理庫存、訂單及有效期限等",
+            "en": "Manage inventory, orders, and expiration dates"
+        },
+        "href": "https://github.com/YC815/",
+        "image": "./image/Web/jmm.png"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "原物料建檔器",
+            "en": "Raw Material Archiver"
+        },
+        "subtitle": {
+            "zh": "ISM甜點店的原物料建檔器",
+            "en": "ISM Dessert Shop Raw Material Archiver"
+        },
+        "href": "https://ism-raw-materials.vercel.app/",
+        "image": "./image/Web/ism-raw.png"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "廚房用計算機",
+            "en": "Kitchen Calculator"
+        },
+        "subtitle": {
+            "zh": "依據多項參數計算當日廚房營收",
+            "en": "Calculate daily kitchen revenue based on multiple parameters"
+        },
+        "href": "https://ism-cost-calculator.vercel.app/",
+        "image": "image/Web/ism-calculator.png"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "颱風假動態",
+            "en": "Typhoon Day System"
+        },
+        "subtitle": {
+            "zh": "讓使用者看到目標縣市的颱風假現狀和台灣周邊動態",
+            "en": "Allow users to view the typhoon day status of their target county/city and real-time updates around Taiwan"
+        },
+        "href": "https://typhoon-tw.vercel.app",
+        "image": "https://opengraph.githubassets.com/1/YC815/taiwan-typhoon-day"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "RSA加密聊天",
+            "en": "RSA Encrypted Chat"
+        },
+        "subtitle": {
+            "zh": "幫助使用者以外掛的形式加密當前的聊天",
+            "en": "Help users encrypt their current chat in the form of a plugin"
+        },
+        "href": "rsa-chat.vercel.app",
+        "image": "https://opengraph.githubassets.com/1/YC815/rsa-chat"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "小型遊戲社區官網",
+            "en": "Official website for a small gaming community"
+        },
+        "subtitle": {
+            "zh": "「Threads MC」 Minecraft伺服器的官方網站",
+            "en": "Official website of \"Threads MC\" Minecraft server"
+        },
+        "href": "https://threads-mc.vercel.app",
+        "image": "https://opengraph.githubassets.com/1/YC815/ThreadsMC"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "吃",
+            "en": "eat"
+        },
+        "subtitle": {
+            "zh": "判斷照片中的物體能不能食用作為教育目的",
+            "en": "Determine whether objects in a photo are edible for educational purposes"
+        },
+        "href": "https://eat-gamma.vercel.app",
+        "image": "https://opengraph.githubassets.com/1/YC815/eat"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "夢想基金創造工具",
+            "en": "Dream Fund Planner"
+        },
+        "subtitle": {
+            "zh": "寫出關於實現夢想之前需要的各種前提，讓AI設計存錢計畫",
+            "en": "Write down various prerequisites needed before achieving a dream and let AI design a savings plan"
+        },
+        "href": "https://dream-found-planner.vercel.app",
+        "image": "https://opengraph.githubassets.com/1/YC815/DreamFund-Planner"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "Quest.py",
+            "en": "Quset.py"
+        },
+        "subtitle": {
+            "zh": "Python題目練習網站",
+            "en": "Python Practice Problem Website"
+        },
+        "href": "https://pardnchiu.github.io/quest.py",
+        "image": "https://opengraph.githubassets.com/1/YC815/quest.py"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "假訊息模擬器",
+            "en": "Fake News Simulator"
+        },
+        "subtitle": {
+            "zh": "讓使用者體驗製作假訊息的過程作為教育目的",
+            "en": "Allow users to experience the process of creating fake news for educational purposes"
+        },
+        "href": "https://fns.vercel.app",
+        "image": "https://opengraph.githubassets.com/1/YC815/Fake-News-Simulator"
+    }
+]

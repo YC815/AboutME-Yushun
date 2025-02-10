@@ -1,0 +1,93 @@
+[
+    {
+        "type": "link",
+        "title": {
+            "zh": "自動NFT產生器",
+            "en": "NFT Generator"
+        },
+        "subtitle": {
+            "zh": "自動組合區塊鏈NFT作品",
+            "en": "Automatically Generate Blockchain NFT Artworks"
+        },
+        "href": "https://github.com/YC815/auto-NFT",
+        "image": "https://opengraph.githubassets.com/1/YC815/auto-NFT"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "簡易函式導入",
+            "en": "Simple Function\nImport"
+        },
+        "subtitle": {
+            "zh": "自動將我設計的工具函式寫進config檔案",
+            "en": "Automatically Write My Designed Utility Functions into the Config File"
+        },
+        "href": "https://github.com/YC815/AutoFishFun",
+        "image": "https://opengraph.githubassets.com/1/YC815/AutoFishFun"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "匿名貼文機器人",
+            "en": "Anonymous\nPosting Bot"
+        },
+        "subtitle": {
+            "zh": "由機器人代替使用者在貼文串中發布貼文",
+            "en": "Bot Posting on Behalf of Users in a Thread"
+        },
+        "href": "https://github.com/YC815/NUN-v3",
+        "image": "https://opengraph.githubassets.com/1/YC815/NUN-v3"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "課程代碼獲取器",
+            "en": "Course Code\nRetriever"
+        },
+        "subtitle": {
+            "zh": "用爬蟲獲取程式教材的教室代碼",
+            "en": "Use Web Scraping to Obtain Program Course Access Codes"
+        },
+        "href": "https://github.com/YC815/GetCodeSparkCode",
+        "image": "https://opengraph.githubassets.com/1/YC815/GetCodeSparkCode"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "濱江匿名網",
+            "en": "BJ Anonymous Site"
+        },
+        "subtitle": {
+            "zh": "將使用者發送到網頁上的內容轉傳到Instagram上",
+            "en": "Forward user-submitted content from the webpage to Instagram"
+        },
+        "href": "https://binjinwebniming5.vercel.app/",
+        "image": "./image/Script/bjniming.png"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "Pls Donate自動掛機",
+            "en": "Pls Donate AFK"
+        },
+        "subtitle": {
+            "zh": "Roblox遊戲腳本",
+            "en": "Roblox Game Auto Script"
+        },
+        "href": "https://github.com/YC815/auto-pls-donate-me",
+        "image": "./image/Script/pls_donate.png"
+    },
+    {
+        "type": "link",
+        "title": {
+            "zh": "IG影片自動套板",
+            "en": "IG Video Auto\nTemplate"
+        },
+        "subtitle": {
+            "zh": "只要輸入素材就會自動產出一部IG的影片",
+            "en": "As long as you input the materials, an IG video will be automatically generated"
+        },
+        "href": "https://github.com/YC815/auto_reel",
+        "image": "./image/Script/reels.png"
+    }
+]
