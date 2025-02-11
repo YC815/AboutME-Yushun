@@ -1156,11 +1156,11 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  background-color: #f0f0f0;
+  background-color: #f3ede7;
 }
 
 .section:nth-child(2) {
-  background-color: #d3d3d3; /* 第二部分區域不同背景顏色 */
+  background-color: #f3ede7; /* 第二部分區域不同背景顏色 */
 }
 
 @media (min-width: 768px) {
@@ -1173,7 +1173,7 @@ body {
 
 /* 預設亮色模式 */
 body.light {
-  background-color: #fffde2;
+  background-color: #f3ede7;
   color: #000000;
 }
 

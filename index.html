@@ -1,3 +1,4 @@
+<!-- TODO: 顏色模式配色-->
 <!DOCTYPE html>
 <html lang="zh-hant">
   <head>
@@ -195,43 +196,122 @@
   </head>
 
   <body id="body" :animation="fade-in">
-    <div id="typewriter" class="file-font"></div>
+    <div id="typewriter" class="file-font">
+      <span id="typewriter-text"></span>
+      <!-- <span id="typewriter-cursor">|</span> -->
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/typewriter-effect/dist/core.js"></script>
     <script>
-      const app = document.getElementById("typewriter");
+      document.addEventListener("DOMContentLoaded", () => {
+        const textEl = document.getElementById("typewriter-text");
+        const containerEl = document.getElementById("typewriter");
 
-      const typewriter = new Typewriter(app, {
-        loop: true,
-        delay: 75,
+        // 取得容器寬度（已設定為 80% 寬度）
+        const containerWidth = containerEl.clientWidth;
+
+        // 取得單一字元寬度（這裡以 'M' 為範例，你也可以改成其他字元）
+        function getCharWidth() {
+          const span = document.createElement("span");
+          span.style.visibility = "hidden";
+          span.style.fontSize = window.getComputedStyle(textEl).fontSize;
+          span.style.fontFamily = window.getComputedStyle(textEl).fontFamily;
+          span.innerText = "M";
+          document.body.appendChild(span);
+          const width = span.offsetWidth;
+          document.body.removeChild(span);
+          return width;
+        }
+        const charWidth = getCharWidth();
+
+        let currentOffset = 0; // 目前已位移的距離
+
+        // 監聽文字內容變化
+        const observer = new MutationObserver(() => {
+          // 取得文字實際寬度
+          const textWidth = textEl.scrollWidth;
+
+          // 當文字超出容器寬度時：
+          if (textWidth > containerWidth) {
+            // 計算超出部分的寬度，再以單位字元寬度（或一格字）進行位移補正
+            // 例如：讓游標保持在容器最右邊時，位移量可設為 (textWidth - containerWidth + charWidth)
+            let newOffset = textWidth - containerWidth; //charWidth
+
+            // 可選：依據字元寬做圓整（以避免不整數的位移）
+            newOffset = Math.ceil(newOffset / charWidth) * charWidth;
+
+            if (newOffset !== currentOffset) {
+              currentOffset = newOffset;
+              textEl.style.transform = `translateX(-${currentOffset}px)`;
+            }
+          } else {
+            // 若文字寬度回到不足容器寬，則取消位移
+            if (currentOffset !== 0) {
+              currentOffset = 0;
+              textEl.style.transform = "translateX(0)";
+            }
+          }
+        });
+
+        observer.observe(textEl, {
+          childList: true,
+          subtree: true,
+          characterData: true,
+        });
+
+        // 以下是你原有的打字程式碼範例，改寫成將文字輸出到 #typewriter-text
+        // 注意：如果你使用的是 typewriter-effect 庫，則可修改 target element 為 textEl
+        const typewriter = new Typewriter(textEl, {
+          loop: true,
+          delay: 125,
+        });
+
+        typewriter
+          .typeString('my_name = "Yushun"')
+          .pauseFor(2500)
+          .deleteAll()
+          .typeString('print("Welcome!")')
+          .pauseFor(2500)
+          .deleteAll()
+          .typeString('life = ["code", "debug", "learn"]')
+          .pauseFor(2500)
+          .deleteAll()
+          .start();
       });
-
-      typewriter
-        .typeString('my_name = "Yushun"')
-        .pauseFor(2500)
-        .deleteAll()
-        .typeString('print("Welcome!")')
-        .pauseFor(2500)
-        .deleteAll()
-        .typeString('life = ["code", "debug", "learn"]')
-        .pauseFor(2500)
-        .deleteAll()
-        .start();
     </script>
     <style>
       #typewriter {
         position: fixed;
-        bottom: 150px; /* 保持原有底部距離 */
-        left: 15%; /* 從畫面 60% 處開始 */
-        transform: none; /* 移除水平居中轉換 */
-        font-size: 8.2rem;
-        color: #d8d8d8;
-        z-index: -1;
+        bottom: 80px;
+        left: 15%;
+        width: 80%;
+        overflow: hidden; /* 隱藏超出部分 */
+        white-space: nowrap; /* 保持單行 */
         pointer-events: none;
-        white-space: nowrap;
-        overflow: hidden;
-        text-align: left; /* 改為左對齊 */
-        width: 80%; /* 限制寬度避免溢出 */
-        margin-left: 20px; /* 微調起始位置 */
+        font-size: 12rem; /* 調整此數值達到你想要的大小 */
+        color: #e3e2db;
+      }
+
+      #typewriter-text {
+        display: inline-block;
+        transition: transform 0.1s linear; /* 平滑移動 */
+      }
+
+      #typewriter-cursor {
+        display: inline-block;
+        font-size: inherit;
+        color: inherit;
+        animation: blink 1s steps(2, start) infinite;
+        /* 使游標固定於容器右側 */
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+
+      /* 游標閃爍效果 */
+      @keyframes blink {
+        to {
+          visibility: hidden;
+        }
       }
     </style>
 
