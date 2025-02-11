@@ -220,16 +220,18 @@
     <style>
       #typewriter {
         position: fixed;
-        bottom: 150px; /* 距離底部 50px */
-        left: 50%;
-        transform: translateX(-50%); /* 水平居中 */
-        font-size: 8.2rem; /* 調整文字大小 */
-        color: #d8d8d8; /* 文字顏色 */
-        z-index: -1; /* 放在背景層 */
-        pointer-events: none; /* 禁止滑鼠點擊影響 */
-        white-space: nowrap; /* 禁止換行 */
-        overflow: hidden; /* 隱藏溢出文字 */
-        text-align: center; /* 確保文字置中 */
+        bottom: 150px; /* 保持原有底部距離 */
+        left: 15%; /* 從畫面 60% 處開始 */
+        transform: none; /* 移除水平居中轉換 */
+        font-size: 8.2rem;
+        color: #d8d8d8;
+        z-index: -1;
+        pointer-events: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-align: left; /* 改為左對齊 */
+        width: 80%; /* 限制寬度避免溢出 */
+        margin-left: 20px; /* 微調起始位置 */
       }
     </style>
 
