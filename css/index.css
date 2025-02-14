@@ -1213,8 +1213,8 @@ body.dark .folder > div > div {
   position: absolute;
   top: 8px;
   width: 96px;
-  height: 56px;
-  background-color: #a7a7a7;
+  height: 57px;
+  background-color: #c1c1c1;
   border-radius: 0.5rem;
   clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
   transition: 0.1s;
@@ -1240,24 +1240,29 @@ body.dark .folder > div > div {
 }
 
 @font-face {
-  font-family: "Shippori Antique";
+  font-family: "EnglishFont";
+  src: url("../fonts/spacemono.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "ChineseFont";
   src: url("../fonts/chinese2.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
-
 /* 全站強調文字（例如導覽列標題）採用 Shippori Antique */
 strong {
-  font-family: "Shippori Antique", serif;
+  font-family: "EnglishFont", "ChineseFont", sans-serif;
 }
 
 .custom-font {
-  font-family: "Shippori Antique", serif;
+  font-family: "EnglishFont", "ChineseFont", sans-serif;
 }
 
 /* HTML 中 <h1> 強制使用此字型 */
 h1 {
-  font-family: "Shippori Antique", sans-serif !important; /* 添加 !important 確保應用 */
+  font-family: "EnglishFont", "ChineseFont", sans-serif !important; /* 添加 !important 確保應用 */
 }
 
 /* ========== HTML 與 Body 的二次重置（避免外部影響） ========== */
@@ -1444,6 +1449,10 @@ body.dark > section.pop-doc > nav {
 
 .dark .b-title {
   color: #cacaca !important;
+}
+
+.content-text {
+  letter-spacing: 0.12em !important;
 }
 
 .b-title {
