@@ -139,5 +139,80 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 啟用打字效果
-  default_events.typingEffect(".typing-text", 'print("Hello, Yushun!")', 50);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const textEl = document.getElementById("typewriter-text");
+  const containerEl = document.getElementById("typewriter");
+
+  // 取得容器寬度（已設定為 80% 寬度）
+  const containerWidth = containerEl.clientWidth;
+
+  // 取得單一字元寬度（這裡以 'M' 為範例，你也可以改成其他字元）
+  function getCharWidth() {
+    const span = document.createElement("span");
+    span.style.visibility = "hidden";
+    span.style.fontSize = window.getComputedStyle(textEl).fontSize;
+    span.style.fontFamily = window.getComputedStyle(textEl).fontFamily;
+    span.innerText = "M";
+    document.body.appendChild(span);
+    const width = span.offsetWidth;
+    document.body.removeChild(span);
+    return width;
+  }
+  const charWidth = getCharWidth();
+
+  let currentOffset = 0; // 目前已位移的距離
+
+  // 監聽文字內容變化
+  const observer = new MutationObserver(() => {
+    // 取得文字實際寬度
+    const textWidth = textEl.scrollWidth;
+
+    // 當文字超出容器寬度時：
+    if (textWidth > containerWidth) {
+      // 計算超出部分的寬度，再以單位字元寬度（或一格字）進行位移補正
+      // 例如：讓游標保持在容器最右邊時，位移量可設為 (textWidth - containerWidth + charWidth)
+      let newOffset = textWidth - containerWidth; //charWidth
+
+      // 可選：依據字元寬做圓整（以避免不整數的位移）
+      newOffset = Math.ceil(newOffset / charWidth) * charWidth;
+
+      if (newOffset !== currentOffset) {
+        currentOffset = newOffset;
+        textEl.style.transform = `translateX(-${currentOffset}px)`;
+      }
+    } else {
+      // 若文字寬度回到不足容器寬，則取消位移
+      if (currentOffset !== 0) {
+        currentOffset = 0;
+        textEl.style.transform = "translateX(0)";
+      }
+    }
+  });
+
+  observer.observe(textEl, {
+    childList: true,
+    subtree: true,
+    characterData: true,
+  });
+
+  // 以下是你原有的打字程式碼範例，改寫成將文字輸出到 #typewriter-text
+  // 注意：如果你使用的是 typewriter-effect 庫，則可修改 target element 為 textEl
+  const typewriter = new Typewriter(textEl, {
+    loop: true,
+    delay: 125,
+  });
+
+  typewriter
+    .typeString('my_name = "Yushun"')
+    .pauseFor(2500)
+    .deleteAll()
+    .typeString('print("Welcome!")')
+    .pauseFor(2500)
+    .deleteAll()
+    .typeString('life = ["code", "debug", "learn"]')
+    .pauseFor(2500)
+    .deleteAll()
+    .start();
 });

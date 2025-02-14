@@ -1,4 +1,10 @@
+/* ========== 全局 Reset 與預設設定 ========== */
+
+/* 1. 全局 reset 與預設樣式（所有元素） */
 * {
+  /* 此段設定所有元素的初始狀態，例如清除 margin、padding，
+     預設字型為 "Noto Sans TC"，以及部分行為（例如觸控、選取等）。
+     → 適用於整個頁面 */
   position: relative;
   margin: 0;
   padding: 0;
@@ -7,7 +13,7 @@
   letter-spacing: 0;
   border: none;
   outline: none;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #0000;
   color: #2e384d;
   word-wrap: anywhere;
   box-sizing: border-box;
@@ -23,10 +29,12 @@
   user-select: inherit;
 }
 
+/* 隱藏 Webkit 瀏覽器的滾動條 */
 *::-webkit-scrollbar {
   display: none;
 }
 
+/* 2. 禁用/啟用文字選取（目前 HTML 中沒有看到明確使用） */
 * [can-select="false"],
 * [can-select="0"],
 * .ban-select {
@@ -49,11 +57,13 @@
   user-select: initial;
 }
 
+/* 3. 設定所有偽元素的 box-sizing */
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* 4. 表單元素外觀重置（HTML中目前未見 input、textarea 等） */
 input:not([type="radio"]):not([type="checkbox"]),
 textarea,
 select {
@@ -63,15 +73,18 @@ select {
   resize: none;
 }
 
+/* 5. 連結與按鈕的游標效果 */
 a[href]:not([href=""]),
 button {
   cursor: pointer;
 }
 
+/* 按鈕內所有子元素禁用 pointer events */
 button * {
   pointer-events: none;
 }
 
+/* 6. 文本相關元素（span, b, strong, i, em, time）繼承行高與字型 */
 span,
 b,
 strong,
@@ -84,6 +97,7 @@ time {
   color: inherit;
 }
 
+/* 7. 第二次全局設定（注意此處會覆蓋上面的部分屬性，例如字型、字距、顏色） */
 * {
   margin: 0;
   padding: 0;
@@ -94,6 +108,9 @@ time {
   box-sizing: border-box;
 }
 
+/* ========== 布局與主要結構 ========== */
+
+/* 8. 固定整個 HTML，禁止滾動（但後續 body 又有局部滾動設定） */
 html {
   position: fixed;
   display: block;
@@ -102,6 +119,8 @@ html {
   overflow: hidden;
 }
 
+/* 9. 頁面主要容器 body 設為 flex，背景色為 #f3ede7 */
+/* → 對應整個頁面，包括 nav、中心內容、pop-folder/pop-doc 等 */
 body {
   position: relative;
   display: flex;
@@ -114,6 +133,9 @@ body {
   overflow: hidden scroll;
 }
 
+/* ========== 打字機效果（部分規則目前未在 HTML 中使用） ========== */
+
+/* 以下 .typing-container 及其相關樣式預期用於打字效果，但目前 HTML 使用的是 id="typewriter" */
 .typing-container {
   position: absolute;
   top: 1rem; /* 距離頁面頂部 */
@@ -143,31 +165,11 @@ body {
   }
 }
 
-/* body::after {
-	content: "Yushun Coding Yushun Coding Yushun Coding Yushun Coding";
-	z-index: 0;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	line-height: 33.3333333333vw;
-	font-family: "Doto", sans-serif;
-	font-size: 50vw;
-	font-style: italic;
-	font-weight: 900;
-	color: #e3e2db;
-	white-space: nowrap;
-	letter-spacing: -2.0833333333vw;
-	transform: translateX(0);
-	animation: after 64s linear infinite;
-	animation-delay: 16s;
-	opacity: 0
-} */
-
+/* ========== 動畫 keyframes（預留動畫，目前 HTML 中無明確呼叫） ========== */
 @keyframes before {
   0% {
     transform: translateX(0);
   }
-
   100% {
     transform: translateX(-50%);
   }
@@ -178,22 +180,24 @@ body {
     transform: translateX(0);
     opacity: 1;
   }
-
   100% {
     transform: translateX(-100%);
   }
 }
 
+/* ========== 響應式調整：當 pop-folder 顯示時的間距調整 ========== */
 @media screen and (min-width: 1024px) {
   body:has(section.pop-folder[data-show="1"]) > nav > section {
     height: 3rem;
   }
-
   body:has(section.pop-folder[data-show="1"]) > section.center {
     padding-top: 3rem;
   }
 }
 
+/* ========== 導覽列樣式 ========== */
+
+/* 導覽列容器 → HTML 中直接為 <nav> */
 body > nav {
   z-index: 1;
   display: flex;
@@ -204,6 +208,7 @@ body > nav {
   flex-flow: column;
 }
 
+/* 導覽列主要區塊 → 對應 <nav> 下的 <section> */
 body > nav > section {
   display: flex;
   justify-content: space-between;
@@ -222,6 +227,7 @@ body > nav > section {
   }
 }
 
+/* 導覽列內區塊（左側、中心、右側） */
 body > nav > section > section {
   display: flex;
   justify-content: flex-start;
@@ -259,6 +265,7 @@ body > nav > section > section.right {
   }
 }
 
+/* 導覽列文字設定 */
 body > nav > section strong {
   font-family: "Kanit", sans-serif;
   font-size: 1.75rem;
@@ -266,7 +273,7 @@ body > nav > section strong {
 }
 
 body > nav > section strong > span {
-  color: rgba(0, 0, 0, 0.5019607843);
+  color: #00000080;
 }
 
 body > nav > section p {
@@ -287,6 +294,9 @@ body > nav > section a {
   text-decoration: none;
 }
 
+/* ========== 中心內容區塊 ========== */
+
+/* 對應 HTML 中 <section class="center">（主要內容區） */
 body > section.center {
   z-index: 1;
   display: flex;
@@ -308,6 +318,7 @@ body > section.center > * {
   }
 }
 
+/* 中心區內的主要分區（例如文件夾列表與內文） */
 body > section.center > section {
   display: flex;
   justify-content: space-between;
@@ -337,6 +348,9 @@ body > section.center > section > * {
   }
 }
 
+/* ===== 文件夾列表 (Tab) ===== */
+
+/* 對應 HTML 中 <section id="folder-list" class="tab folder-list"> */
 body > section.center > section > section.tab {
   order: 1;
   display: flex;
@@ -359,6 +373,9 @@ body > section.center > section > section.tab > * {
   }
 }
 
+/* ===== 主要內文區 (.body) ===== */
+
+/* 對應 HTML 中 <section class="body">（包含標題、簡介、社交資訊…） */
 body > section.center > section > section.body {
   order: 0;
   display: flex;
@@ -383,6 +400,7 @@ body > section.center > section > section.body {
   }
 }
 
+/* 主要內文第一區：標題、說明等 */
 body > section.center > section > section.body > section:first-child {
   display: flex;
   flex-flow: column;
@@ -421,7 +439,7 @@ body > section.center > section > section.body > section:first-child span {
   gap: 0.5rem;
   font-size: 1.125rem;
   font-weight: 600;
-  color: rgba(0, 0, 0, 0.5019607843);
+  color: #00000080;
 }
 
 body
@@ -436,18 +454,19 @@ body
 
 body > section.center > section > section.body > section:first-child p {
   line-height: 2rem;
-  color: rgba(0, 0, 0, 0.8);
+  color: #000000cc;
   font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: -0.2px;
 }
 
+/* 內文中特效：漸變背景文字（使用動畫） */
 body > section.center > section > section.body > section:first-child em {
   line-height: 2rem;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
-  color: rgba(0, 0, 0, 0);
+  color: #000000cc;
   background: linear-gradient(90deg, purple, red, orange);
   background-size: 200% 100%;
   background-clip: text;
@@ -469,7 +488,7 @@ body > section.center > section > section.body > section:first-child em {
     background-position: 0% 50%;
   }
 }
-
+/* 主要內文第二區：社交、聯絡與版權訊息 */
 body > section.center > section > section.body > section:last-child {
   display: flex;
   justify-content: space-between;
@@ -501,12 +520,14 @@ body > section.center > section > section.body > section:last-child {
   }
 }
 
+/* 各小區塊內部元素 */
 body > section.center > section > section.body > section:last-child > section {
   display: flex;
   flex-flow: column;
   gap: 1rem;
 }
 
+/* 預留：某些區塊在桌機狀態下隱藏 */
 body
   > section.center
   > section
@@ -528,6 +549,7 @@ body
   }
 }
 
+/* 內文中連結、按鈕等細部樣式 */
 body
   > section.center
   > section
@@ -535,7 +557,7 @@ body
   > section:last-child
   > section
   > strong {
-  color: rgba(0, 0, 0, 0.5019607843);
+  color: #00000080;
   font-size: 0.875rem;
   font-weight: 500;
 }
@@ -570,7 +592,7 @@ body
     > section:last-child
     > section
     > a:hover {
-    color: rgba(0, 0, 0, 0);
+    color: #00000000;
   }
 }
 
@@ -595,7 +617,7 @@ body
   > section:last-child
   > section
   > p {
-  color: rgba(0, 0, 0, 0.5019607843);
+  color: #00000080;
   letter-spacing: -0.1px;
 }
 
@@ -623,6 +645,7 @@ body
   color: #000;
 }
 
+/* ========== 頁尾 (Footer) ========== */
 body > section.center > section > footer {
   order: 2;
   padding: 3rem 0 1.5rem;
@@ -635,7 +658,7 @@ body > section.center > section > footer {
 }
 
 body > section.center > section > footer p {
-  color: rgba(0, 0, 0, 0.5019607843);
+  color: #00000080;
   letter-spacing: -0.1px;
   text-align: center;
 }
@@ -650,6 +673,9 @@ body > section.center > section > footer p a {
   color: #000;
 }
 
+/* ========== 資料夾視窗 (pop-folder) ========== */
+
+/* 對應 HTML 中 <section id="pop-folder" class="pop-folder" data-show="0"> */
 body > section.pop-folder {
   z-index: 1;
   position: fixed;
@@ -657,7 +683,7 @@ body > section.pop-folder {
   margin: 0 auto;
   width: 100%;
   background-color: #fbfbfb;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1019607843);
+  box-shadow: 0 4px 16px #0000001a;
   transition: 0.3s;
   overflow: hidden scroll;
   top: 100%;
@@ -698,6 +724,7 @@ body > section.pop-folder > * {
   flex-shrink: 0;
 }
 
+/* pop-folder 的導覽列（標題與關閉按鈕） */
 body > section.pop-folder > nav {
   z-index: 1;
   position: sticky;
@@ -707,7 +734,7 @@ body > section.pop-folder > nav {
   align-items: center;
   width: 100%;
   background-color: #fbfbfb;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.0509803922);
+  border-bottom: 1px solid #0000000d;
   padding: 1rem 1.5rem 0.5rem;
 }
 
@@ -748,11 +775,12 @@ body > section.pop-folder > nav strong {
 }
 
 body > section.pop-folder > nav i {
-  color: rgba(0, 0, 0, 0.5019607843);
+  color: #00000080;
   font-size: 1.75rem;
   transition: 0.3s;
 }
 
+/* pop-folder 內容區：會依照點選的資料夾內容動態填充 */
 body > section.pop-folder > section {
   display: flex;
   flex-flow: row wrap;
@@ -768,6 +796,7 @@ body > section.pop-folder > section {
   }
 }
 
+/* pop-folder 中的連結與按鈕（用於顯示資料夾內的文件） */
 body > section.pop-folder > section a,
 body > section.pop-folder > section button {
   display: flex;
@@ -806,18 +835,19 @@ body > section.pop-folder > section button {
 @media (hover: hover) {
   body > section.pop-folder > section a:hover,
   body > section.pop-folder > section button:hover {
-    background-color: rgba(0, 0, 0, 0.1019607843);
+    background-color: #0000001a;
   }
 }
 
+/* pop-folder 中圖像與文字說明 */
 body > section.pop-folder > section a img,
 body > section.pop-folder > section button img {
   padding: 0.5rem;
   object-fit: contain;
   width: 100%;
   aspect-ratio: 1/1;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2039215686));
-  -webkit-filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2039215686));
+  filter: drop-shadow(0 2px 4px #00000034);
+  -webkit-filter: drop-shadow(0 2px 4px #00000034);
 }
 
 body > section.pop-folder > section a img.cover,
@@ -838,10 +868,13 @@ body > section.pop-folder > section button p {
   margin-top: -8px;
   font-size: 0.75rem;
   text-align: center;
-  color: rgba(0, 0, 0, 0.5019607843);
+  color: #00000080;
   letter-spacing: -0.1px;
 }
 
+/* ========== 文件視窗 (pop-doc) ========== */
+
+/* 對應 HTML 中 <section id="pop-doc" class="pop-doc" data-show="0"> */
 body > section.pop-doc {
   z-index: 1;
   position: fixed;
@@ -849,7 +882,7 @@ body > section.pop-doc {
   margin: 0 auto;
   width: 100%;
   background-color: #fbfbfb;
-  box-shadow: 0 0px 16px rgba(0, 0, 0, 0.1019607843);
+  box-shadow: 0 0px 16px #0000001a;
   transition: 0.3s;
   overflow: hidden scroll;
   top: 100%;
@@ -899,7 +932,7 @@ body > section.pop-doc > nav {
   align-items: center;
   width: 100%;
   background-color: #fbfbfb;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.0509803922);
+  border-bottom: 1px solid #0000000d;
   padding: 1rem 1.5rem 0.5rem;
 }
 
@@ -940,7 +973,7 @@ body > section.pop-doc > nav strong {
 }
 
 body > section.pop-doc > nav i {
-  color: rgba(0, 0, 0, 0.5019607843);
+  color: #00000080;
   font-size: 1.75rem;
   transition: 0.3s;
 }
@@ -955,10 +988,14 @@ body > section.pop-doc > section {
   }
 }
 
+/* ========== 資料夾列表內的文件夾圖示 (Folder Icon) ========== */
+
+/* 以下規則用來產生每個資料夾的圖示與陰影效果，
+   並依據資料夾順序設定不同的 clip-path (共 6 個) */
 body .folder-list[data-index="0"] > button.folder:nth-child(1) > div::after {
   top: 0px;
   border-radius: 0.25rem;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2039215686);
+  box-shadow: 0 -4px 8px #00000034;
 }
 
 body .folder-list[data-index="0"] > button.folder:nth-child(1) > div > div {
@@ -967,10 +1004,11 @@ body .folder-list[data-index="0"] > button.folder:nth-child(1) > div > div {
   border-radius: 2rem 0.75rem 1.5rem 0.5rem;
 }
 
+/* 同理：資料夾索引 1~5（依序對應按鈕的順序） */
 body .folder-list[data-index="1"] > button.folder:nth-child(2) > div::after {
   top: 0px;
   border-radius: 0.25rem;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2039215686);
+  box-shadow: 0 -4px 8px #00000034;
 }
 
 body .folder-list[data-index="1"] > button.folder:nth-child(2) > div > div {
@@ -982,7 +1020,7 @@ body .folder-list[data-index="1"] > button.folder:nth-child(2) > div > div {
 body .folder-list[data-index="2"] > button.folder:nth-child(3) > div::after {
   top: 0px;
   border-radius: 0.25rem;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2039215686);
+  box-shadow: 0 -4px 8px #00000034;
 }
 
 body .folder-list[data-index="2"] > button.folder:nth-child(3) > div > div {
@@ -994,7 +1032,7 @@ body .folder-list[data-index="2"] > button.folder:nth-child(3) > div > div {
 body .folder-list[data-index="3"] > button.folder:nth-child(4) > div::after {
   top: 0px;
   border-radius: 0.25rem;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2039215686);
+  box-shadow: 0 -4px 8px #00000034;
 }
 
 body .folder-list[data-index="3"] > button.folder:nth-child(4) > div > div {
@@ -1006,7 +1044,7 @@ body .folder-list[data-index="3"] > button.folder:nth-child(4) > div > div {
 body .folder-list[data-index="4"] > button.folder:nth-child(5) > div::after {
   top: 0px;
   border-radius: 0.25rem;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2039215686);
+  box-shadow: 0 -4px 8px #00000034;
 }
 
 body .folder-list[data-index="4"] > button.folder:nth-child(5) > div > div {
@@ -1018,7 +1056,7 @@ body .folder-list[data-index="4"] > button.folder:nth-child(5) > div > div {
 body .folder-list[data-index="5"] > button.folder:nth-child(6) > div::after {
   top: 0px;
   border-radius: 0.25rem;
-  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2039215686);
+  box-shadow: 0 -4px 8px #00000034;
 }
 
 body .folder-list[data-index="5"] > button.folder:nth-child(6) > div > div {
@@ -1027,6 +1065,8 @@ body .folder-list[data-index="5"] > button.folder:nth-child(6) > div > div {
   border-radius: 2rem 0.75rem 1.5rem 0.5rem;
 }
 
+/* 資料夾按鈕基本樣式 */
+/* 對應 HTML 中 <button class="folder"> */
 body .folder {
   display: flex;
   flex-flow: column;
@@ -1044,11 +1084,12 @@ body .folder {
   }
 }
 
+/* 應用滑鼠效果：懸停與點擊時變化 */
 @media (hover: hover) {
   body .folder:hover > div::after {
     top: 0px;
     border-radius: 0.25rem;
-    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2039215686);
+    box-shadow: 0 -4px 8px #00000034;
   }
 
   body .folder:hover > div > div {
@@ -1062,26 +1103,48 @@ body .folder {
   }
 }
 
+@media (hover: hover) {
+  body.dark .folder:hover > div::after {
+    top: 0px;
+    border-radius: 0.25rem;
+    box-shadow: 0 -4px 8px #ffffff56;
+  }
+
+  body.dark .folder:hover > div > div {
+    width: 112px;
+    clip-path: polygon(16px 2px, 0 100%, 96px 100%, 112px 2px);
+    border-radius: 2rem 0.75rem 1.5rem 0.5rem;
+  }
+
+  body.dark .folder:active > div::after {
+    top: -8px;
+  }
+}
+/* 資料夾樣式區 */
+/* 一般(亮色 */
 body .folder > div {
+  /*中層*/
   position: relative;
   width: 96px;
   height: 64px;
-  background-color: #797874;
+  background-color: #757974;
   border-radius: 0 0.5rem 0.5rem 0.5rem;
 }
 
 body .folder > div::before {
+  /*頂層*/
   content: "";
   position: absolute;
   top: -7.5px;
   width: 40px;
   height: 8px;
-  background-color: #797874;
+  background-color: #767974;
   clip-path: polygon(0 0, 0 100%, 100% 100%, 80% 0%);
   border-radius: 0.5rem 0 0 0;
 }
 
 body .folder > div::after {
+  /*紙*/
   content: "";
   z-index: 0;
   position: absolute;
@@ -1095,16 +1158,69 @@ body .folder > div::after {
 }
 
 body .folder > div > div {
+  /*資料夾本體*/
   z-index: 1;
   position: absolute;
   top: 8px;
   width: 96px;
   height: 56px;
-  background-color: #000;
+  background-color: #242424;
   border-radius: 0.5rem;
   clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
   transition: 0.1s;
 }
+
+/* 深色 */
+body.dark .folder > div {
+  /*中層*/
+  position: relative;
+  width: 96px;
+  height: 64px;
+  background-color: #a7a7a7;
+  border-radius: 0 0.5rem 0.5rem 0.5rem;
+}
+
+body.dark .folder > div::before {
+  /*頂層*/
+  content: "";
+  position: absolute;
+  top: -7.5px;
+  width: 40px;
+  height: 8px;
+  background-color: #f5f3f3;
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 80% 0%);
+  border-radius: 0.5rem 0 0 0;
+}
+
+body.dark .folder > div::after {
+  /*紙*/
+  content: "";
+  z-index: 0;
+  position: absolute;
+  top: 8px;
+  left: 6px;
+  width: 90px;
+  height: 56px;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  transition: 0.3s;
+  border: 1px solid #000000c1; /* 白色邊框，透明度 30% */
+}
+
+body.dark .folder > div > div {
+  /*資料夾本體*/
+  z-index: 1;
+  position: absolute;
+  top: 8px;
+  width: 96px;
+  height: 56px;
+  background-color: #a7a7a7;
+  border-radius: 0.5rem;
+  clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 0);
+  transition: 0.1s;
+}
+/* 資料夾樣式結束 */
+/* ========== 自訂字體與字型設定 ========== */
 
 @font-face {
   font-family: "Cubic 11";
@@ -1113,9 +1229,16 @@ body .folder > div > div {
   font-style: normal;
 }
 
+/* .file-font 用於 typewriter 等（HTML 中 id="typewriter" 的文字採用此類字型） */
 .file-font {
   font-family: "Cubic 11", serif;
 }
+
+.dark .file-font {
+  font-family: "Cubic 11", serif;
+  color: #f3ede7 !important;
+}
+
 @font-face {
   font-family: "Shippori Antique";
   src: url("../fonts/chinese2.ttf") format("truetype");
@@ -1123,6 +1246,7 @@ body .folder > div > div {
   font-style: normal;
 }
 
+/* 全站強調文字（例如導覽列標題）採用 Shippori Antique */
 strong {
   font-family: "Shippori Antique", serif;
 }
@@ -1131,10 +1255,12 @@ strong {
   font-family: "Shippori Antique", serif;
 }
 
+/* HTML 中 <h1> 強制使用此字型 */
 h1 {
   font-family: "Shippori Antique", sans-serif !important; /* 添加 !important 確保應用 */
 }
 
+/* ========== HTML 與 Body 的二次重置（避免外部影響） ========== */
 html,
 body {
   margin: 0;
@@ -1143,6 +1269,10 @@ body {
   scroll-behavior: smooth; /* 平滑滾動效果 */
 }
 
+/* ========== 其他容器與區塊（部分可能未在此頁面使用） ========== */
+
+/* .container 與 .section 主要用於建立全螢幕捲動區域 */
+/* HTML 中未見明確使用，可能供其他頁面參考 */
 .container {
   height: 200vh; /* 高度為螢幕高度的兩倍 */
   display: flex;
@@ -1163,13 +1293,15 @@ body {
   background-color: #f3ede7; /* 第二部分區域不同背景顏色 */
 }
 
+/* 當螢幕寬度大於 768px 時禁用滾動（桌機模式） */
 @media (min-width: 768px) {
-  /* 僅在螢幕寬度大於 768px 時禁用滾動 */
   html,
   body {
     overflow: hidden;
   }
 }
+
+/* ========== 主題色模式 (亮/暗) 與切換按鈕 ========== */
 
 /* 預設亮色模式 */
 body.light {
@@ -1178,10 +1310,6 @@ body.light {
 }
 
 /* 深色模式 */
-body.dark {
-  background-color: #1e1e1e;
-  color: #ffffff;
-}
 
 /* 主題切換按鈕 */
 .theme-toggle-btn {
@@ -1198,17 +1326,18 @@ body.dark {
   transition: background-color 0.3s, color 0.3s, transform 0.2s;
 }
 
-/* 亮色模式 */
+/* 切換按鈕在亮/暗模式下的文字顏色 */
 body.light .theme-toggle-btn {
   color: #000;
 }
 
-/* 深色模式 */
 body.dark .theme-toggle-btn {
   color: #fff;
 }
 
-/* 為資料夾內容設置 .folder-font 樣式 */
+/* ========== 資料夾與文檔內文字字型設定 ========== */
+
+/* 資料夾內容字型（供 pop-folder 內使用） */
 .folder-font {
   font-family: "Noto Sans TC", sans-serif; /* 字體 */
   font-size: 1rem; /* 字體大小 */
@@ -1216,15 +1345,18 @@ body.dark .theme-toggle-btn {
   color: #333; /* 文字顏色 */
 }
 
-/* 應用到資料夾內容 */
+/* 將 pop-folder 內的所有元素字型設為繼承 */
 #pop-folder-body * {
-  font-family: inherit; /* 繼承 .folder-font */
+  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
   color: inherit;
 }
+.dark #pop-folder-body * {
+  color: #f3ede7 !important;
+}
 
-/* 應用到文檔內容 */
+/* 將 pop-doc 內的所有元素字型設為繼承 */
 #pop-doc-body * {
   font-family: inherit;
   font-size: inherit;
@@ -1239,6 +1371,241 @@ body.dark .theme-toggle-btn {
   font-style: normal;
 }
 
+/* 大尺寸文件字型 */
 .big-file-font {
   font-family: "unifont", serif;
+}
+.dark .big-file-font {
+  font-family: "unifont", serif;
+  color: #f3ede7 !important;
+}
+
+/* ========== 深色模式覆蓋區塊 ========== */
+
+/* 全局：Body */
+body.dark {
+  /* 請填入深色模式下的背景色與文字色 */
+  background-color: #1e1e1e;
+}
+
+/* 導覽列 */
+body.dark nav {
+  background-color: #1e1e1e;
+}
+
+/* 導覽列內文字與圖示 */
+body.dark nav > section strong,
+body.dark nav > section p,
+body.dark nav > section i,
+body.dark nav > section a {
+  color: #f3ede7;
+}
+
+/* 主要內容區（center 區塊） */
+body.dark > section.center {
+  background-color: #1e1e1e;
+  color: #f3ede7;
+}
+/* 資料夾文字 */
+body.dark .folder {
+  color: #f3ede7;
+}
+
+/* 若文件夾內的圖示需要調整 */
+body.dark .folder > div {
+  background-color: #e3e2db;
+}
+
+/* 資料夾視窗 (pop-folder) */
+body.dark > section.pop-folder {
+  background-color: #282828; /* 資料夾點進去背景 */
+}
+
+/* 資料夾視窗的導覽列 */
+body.dark > section.pop-folder > nav {
+  background-color: #282828; /*資料夾點進去上方標題列*/
+  border-bottom-color: #1f1f1f; /*資料夾點進去上方標題列格線*/
+}
+
+/* 文件視窗的導覽列 */
+body.dark > section.pop-doc > nav {
+  background-color: #fbfbfb;
+  border-bottom-color: #6a6a6a;
+}
+
+/* 主題切換按鈕（如有需要額外調整） */
+.dark .home-title {
+  color: #f3ede7 !important;
+}
+
+.home-title {
+  color: #000000 !important;
+}
+
+.dark .b-title {
+  color: #cacaca !important;
+}
+
+.b-title {
+  color: #3e3e3e !important;
+}
+.dark .icon-color {
+  color: #f3ede7 !important;
+}
+
+.icon-color {
+  color: #1e1e1e !important;
+}
+
+body.dark .hello-text,
+body.dark .hello-text * {
+  color: #f3ede7 !important;
+}
+
+/* 淺色模式 */
+/* 修正淺色模式 `<em>` 顯示問題 */
+body.light em {
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff4e50, #fc913a);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: moveBackground 3s ease-in-out infinite;
+}
+
+/* 修正深色模式 `<em>` 顯示問題 */
+body.dark em {
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: moveBackground 3s ease-in-out infinite;
+}
+
+/* 文字背景動畫，讓顏色流動 */
+@keyframes moveBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 淺色模式 */
+body.light a {
+  font-weight: bold;
+  text-decoration: none;
+  background: linear-gradient(90deg, #ff5f6d, #ffc371);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: color 0.3s ease-in-out;
+}
+
+/* 深色模式 */
+body.dark a {
+  font-weight: bold;
+  text-decoration: none;
+  background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: color 0.3s ease-in-out;
+}
+
+/* 超連結 Hover 效果 */
+body.light a:hover,
+body.dark a:hover {
+  color: #fff;
+}
+
+em {
+  font-style: normal !important;
+  display: inline-block !important;
+}
+
+body.dark em {
+  background: none;
+  color: #ff9a9e;
+}
+
+/* 修正語言切換按鈕的顏色 */
+body.light .theme-toggle-btn,
+body.light .theme-toggle-btn i,
+body.light .icon-color {
+  color: #000 !important;
+}
+
+/* 修正語言按鈕（地球圖標） */
+body.light a[href*="lang"] i.fa-globe {
+  color: #000 !important;
+}
+
+/* 確保暗色模式的對應變化 */
+body.dark .theme-toggle-btn,
+body.dark .theme-toggle-btn i,
+body.dark .icon-color {
+  color: #fff !important;
+}
+
+body.dark a[href*="lang"] i.fa-globe {
+  color: #fff !important;
+}
+
+.dark .rb-text {
+  color: #f3ede7 !important;
+}
+.rb-text {
+  color: #0000 !important;
+}
+
+/* TODO: 打字效果的圖層不對 */
+/* 確保深色模式下打字機效果仍然可見 */
+body.dark #typewriter,
+body.dark .typing-container {
+  color: #3a3936 !important; /* 這裡設定與其他文字不同的顏色 */
+  background: none !important; /* 防止 background-clip: text 影響 */
+}
+
+/* 確保打字機游標在深色模式下可見 */
+body.dark #typewriter-cursor {
+  color: #3a3936 !important;
+}
+
+/* 確保打字機內容不受背景遮蔽 */
+body.dark .typing-container,
+body.dark #typewriter {
+  z-index: 200 !important;
+  position: fixed !important;
+}
+
+/* 若有使用 background-clip: text，則在深色模式下修正 */
+body.dark .typing-container em {
+  background: none !important;
+  color: #e3e2db !important;
+}
+
+.YC {
+  color: #000;
+}
+
+.dark .YC {
+  color: #ffffff;
+}
+
+.ode {
+  color: #7a7979 !important;
+}
+
+.dark .ode {
+  color: #bbbbbb !important;
 }
