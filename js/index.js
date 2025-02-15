@@ -55,13 +55,18 @@ const default_events = {
       addCookie("theme", "light", 7 * 24 * 3600);
       themeToggleButton.classList.remove("fa-moon");
       themeToggleButton.classList.add("fa-sun");
+      typewriterText.style.color = "#2e384d"; // 亮色模式的顏色
     } else {
       body.classList.remove("light");
       body.classList.add("dark");
       addCookie("theme", "dark", 7 * 24 * 3600);
       themeToggleButton.classList.remove("fa-sun");
       themeToggleButton.classList.add("fa-moon");
+      typewriterText.style.color = "#f3ede7"; // 深色模式的顏色
     }
+    setTimeout(() => {
+      typewriter.start();
+    }, 500);
   },
   typingEffect: function (selector, text, speed = 200) {
     const target = document.querySelector(selector);
