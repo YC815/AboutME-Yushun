@@ -1434,8 +1434,9 @@ body.dark > section.pop-folder > nav {
 
 /* 文件視窗的導覽列 */
 body.dark > section.pop-doc > nav {
-  background-color: #fbfbfb;
+  background-color: #1f1f1f;
   border-bottom-color: #6a6a6a;
+  color: #f3ede7;
 }
 
 /* 主題切換按鈕（如有需要額外調整） */
