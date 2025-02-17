@@ -1589,18 +1589,3 @@ body.dark .typing-container em {
 .dark .ode {
   color: #bbbbbb !important;
 }
-
-@media screen and (max-width: 768px) {
-  #social-list {
-    opacity: 1;
-    transform: translateY(0);
-    /* 可選：加入過渡效果，但因為是滾動驅動，實際上以 JS 更新較佳 */
-    transition: opacity 0.2s, transform 0.2s;
-  }
-
-  #folder-list {
-    opacity: 0;
-    transform: translateY(50px); /* 起始向下 50px，可依需求調整 */
-    transition: opacity 0.2s, transform 0.2s;
-  }
-}
