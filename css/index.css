@@ -162,6 +162,7 @@ body {
   }
   to {
     opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -1580,6 +1581,35 @@ body.dark a[href*="lang"] i.fa-globe {
 
 /* TODO: 打字效果的圖層不對 */
 /* 確保深色模式下打字機效果仍然可見 */
+
+#typewriter {
+  position: fixed;
+  bottom: 80px;
+  left: 15%;
+  width: 80%;
+  overflow: hidden; /* 隱藏超出部分 */
+  white-space: nowrap; /* 保持單行 */
+  pointer-events: none;
+  font-size: 12rem; /* 調整此數值達到你想要的大小 */
+  color: #e3e2db;
+}
+
+#typewriter-text {
+  display: inline-block;
+  transition: transform 0.1s linear; /* 平滑移動 */
+}
+
+#typewriter-cursor {
+  display: inline-block;
+  font-size: inherit;
+  color: inherit;
+  animation: blink 1s steps(2, start) infinite;
+  /* 使游標固定於容器右側 */
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
 body.dark #typewriter,
 body.dark .typing-container {
   color: #3a3936 !important; /* 這裡設定與其他文字不同的顏色 */
