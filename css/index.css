@@ -15,6 +15,8 @@
   outline: none;
   background-color: #0000;
   color: #2e384d;
+  /* color: #000; */
+
   word-wrap: anywhere;
   box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
@@ -27,8 +29,8 @@
   -moz-user-select: inherit;
   -ms-user-select: inherit;
   user-select: inherit;
+  text-align: left;
 }
-
 /* 隱藏 Webkit 瀏覽器的滾動條 */
 *::-webkit-scrollbar {
   display: none;
@@ -98,15 +100,6 @@ time {
 }
 
 /* 7. 第二次全局設定（注意此處會覆蓋上面的部分屬性，例如字型、字距、顏色） */
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Noto Sans", sans-serif;
-  letter-spacing: 1px;
-  text-align: left;
-  color: #000;
-  box-sizing: border-box;
-}
 
 /* ========== 布局與主要結構 ========== */
 
@@ -467,13 +460,12 @@ body > section.center > section > section.body > section:first-child em {
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
-  color: #000000cc;
+  color: #00000000;
   background: linear-gradient(90deg, purple, red, orange);
   background-size: 200% 100%;
   background-clip: text;
   -webkit-background-clip: text;
   animation: moveBackground 2s ease-in-out infinite;
-  -webkit-background-clip: text;
 }
 
 @keyframes moveBackground {
@@ -581,7 +573,6 @@ body
   background-clip: text;
   -webkit-background-clip: text;
   animation: moveBackground 2s ease-in-out infinite;
-  -webkit-background-clip: text;
   transition: 0.3s;
 }
 
@@ -1104,23 +1095,6 @@ body .folder {
   }
 }
 
-@media (hover: hover) {
-  body.dark .folder:hover > div::after {
-    top: 0px;
-    border-radius: 0.25rem;
-    box-shadow: 0 -4px 8px #ffffff56;
-  }
-
-  body.dark .folder:hover > div > div {
-    width: 112px;
-    clip-path: polygon(16px 2px, 0 100%, 96px 100%, 112px 2px);
-    border-radius: 2rem 0.75rem 1.5rem 0.5rem;
-  }
-
-  body.dark .folder:active > div::after {
-    top: -8px;
-  }
-}
 /* 資料夾樣式區 */
 /* 一般(亮色 */
 body .folder > div {
@@ -1267,13 +1241,6 @@ h1 {
 }
 
 /* ========== HTML 與 Body 的二次重置（避免外部影響） ========== */
-html,
-body {
-  margin: 0;
-  padding: 0;
-  overflow: auto; /* 開啟滾動 */
-  scroll-behavior: smooth; /* 平滑滾動效果 */
-}
 
 /* ========== 其他容器與區塊（部分可能未在此頁面使用） ========== */
 
@@ -1331,16 +1298,19 @@ body.light {
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s, transform 0.2s;
 }
-
 /* 切換按鈕在亮/暗模式下的文字顏色 */
-body.light .theme-toggle-btn {
-  color: #000;
+
+body.light .theme-toggle-btn,
+body.light .theme-toggle-btn i,
+body.light .icon-color {
+  color: #000 !important;
 }
 
-body.dark .theme-toggle-btn {
-  color: #fff;
+body.dark .theme-toggle-btn,
+body.dark .theme-toggle-btn i,
+body.dark .icon-color {
+  color: #fff !important;
 }
-
 /* ========== 資料夾與文檔內文字字型設定 ========== */
 
 /* 資料夾內容字型（供 pop-folder 內使用） */
@@ -1407,11 +1377,6 @@ body.dark nav > section a {
   color: #f3ede7;
 }
 
-/* 主要內容區（center 區塊） */
-body.dark > section.center {
-  background-color: #1e1e1e;
-  color: #f3ede7;
-}
 /* 資料夾文字 */
 body.dark .folder {
   color: #f3ede7;
@@ -1492,22 +1457,12 @@ body.dark em {
   background-size: 200% 100%;
   background-clip: text;
   -webkit-background-clip: text;
-  color: transparent;
+  /* color: transparent; */
+  color: #ff9a9e;
   animation: moveBackground 3s ease-in-out infinite;
 }
 
 /* 文字背景動畫，讓顏色流動 */
-@keyframes moveBackground {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 /* 淺色模式 */
 body.light a {
@@ -1544,17 +1499,7 @@ em {
   display: inline-block !important;
 }
 
-body.dark em {
-  background: none;
-  color: #ff9a9e;
-}
-
 /* 修正語言切換按鈕的顏色 */
-body.light .theme-toggle-btn,
-body.light .theme-toggle-btn i,
-body.light .icon-color {
-  color: #000 !important;
-}
 
 /* 修正語言按鈕（地球圖標） */
 body.light a[href*="lang"] i.fa-globe {
@@ -1562,11 +1507,6 @@ body.light a[href*="lang"] i.fa-globe {
 }
 
 /* 確保暗色模式的對應變化 */
-body.dark .theme-toggle-btn,
-body.dark .theme-toggle-btn i,
-body.dark .icon-color {
-  color: #fff !important;
-}
 
 body.dark a[href*="lang"] i.fa-globe {
   color: #fff !important;
@@ -1624,7 +1564,7 @@ body.dark #typewriter-cursor {
 /* 確保打字機內容不受背景遮蔽 */
 body.dark .typing-container,
 body.dark #typewriter {
-  z-index: 200 !important;
+  z-index: 1 !important;
   position: fixed !important;
 }
 
@@ -1648,4 +1588,19 @@ body.dark .typing-container em {
 
 .dark .ode {
   color: #bbbbbb !important;
+}
+
+@media screen and (max-width: 768px) {
+  #social-list {
+    opacity: 1;
+    transform: translateY(0);
+    /* 可選：加入過渡效果，但因為是滾動驅動，實際上以 JS 更新較佳 */
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  #folder-list {
+    opacity: 0;
+    transform: translateY(50px); /* 起始向下 50px，可依需求調整 */
+    transition: opacity 0.2s, transform 0.2s;
+  }
 }
