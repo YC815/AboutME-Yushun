@@ -1,4 +1,3 @@
-<!-- TODO: 顏色模式配色-->
 <!-- TODO: 網頁載入優化-->
 <!DOCTYPE html>
 <html lang="zh-hant">
@@ -45,7 +44,6 @@
     />
     <meta property="og:image" content="./image/cover.jpg" />
     <meta property="og:url" content="https://yushun.chen.chen/" />
-    <!-- TODO: fixt it -->
     <meta property="og:site_name" content="QuickUI" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="zh_TW" />
@@ -59,21 +57,21 @@
     />
     <meta property="twitter:image" content="./image/cover.jpg" />
     <meta property="twitter:url" content="https://yushun.chen.zone/" />
-
+    <!-- TODO: 以下內容 -->
     <!-- Google Verification -->
-    <!-- TODO:
+    <!-- 
      <meta
       name="google-site-verification"
       content="YQQ2f6AchR8dcb55Az2BYd_mw4TrP0J1RApD-v2v65Y"
     /> -->
 
     <!-- Google Analytics -->
-    <!-- TODO:
+    <!-- 
      <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-L5VYEZPVXX"
     ></script> -->
-    <!-- TODO:
+    <!-- 
      <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -258,16 +256,13 @@
         </section>
         <section class="body">
           <section>
-            <!-- TODO:深色模式無法變色 -->
             <span class="hello-text" :html="i18n.hello"></span>
             <h1 class="home-title">{{ i18n.name }}</h1>
             <h2 class="custom-font home-title">{{ i18n.title }}</h2>
-            <!-- TODO:深色模式無法變色 / 亮色模式漸層不明顯-->
             <p class="home-title content-text" :html="i18n.content "></p>
           </section>
           <section>
             <section>
-              <!-- TODO:深色模式無法變色 / 亮色模式漸層不明顯-->
               <strong class="b-title">{{ i18n.social }}</strong>
               <a href="https://github.com/YC815" target="_blank"
                 ><i class="fa-brands fa-github icon-color"></i>GITHUB</a
@@ -434,7 +429,7 @@
             setInterval((_) => {
               setTime();
             }, 1000);
-            // TODO:深色模式時mode: dark, 亮色模式時mode: light
+            // TODO: 深色模式時mode: dark, 亮色模式時mode: light
             editor = new MDViewer({
               id: "pop-doc-body",
               style: {

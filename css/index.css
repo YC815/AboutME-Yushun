@@ -1519,7 +1519,6 @@ body.dark a[href*="lang"] i.fa-globe {
   color: #0000 !important;
 }
 
-/* TODO: 打字效果的圖層不對 */
 /* 確保深色模式下打字機效果仍然可見 */
 
 #typewriter {
