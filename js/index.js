@@ -1,5 +1,10 @@
 let page;
-
+// import {
+//   MDEditor,
+//   MDViewer,
+//   MDParser,
+// } from "https://cdn.jsdelivr.net/npm/@pardnchiu/nanomd@[1.8.5]/dist/NanoMD.esm.js";
+//
 const default_events = {
   show: function () {
     const isShow = this.$parent(0).$$class("show");
@@ -48,6 +53,8 @@ const default_events = {
     const body = document.body;
     const isDark = body.classList.contains("dark");
     const themeToggleButton = document.querySelector(".theme-toggle-btn i");
+    // const editor = MDViewer.style;
+    console.log("toggleTheme");
 
     if (isDark) {
       body.classList.remove("dark");
@@ -56,6 +63,7 @@ const default_events = {
       themeToggleButton.classList.remove("fa-moon");
       themeToggleButton.classList.add("fa-sun");
       typewriterText.style.color = "#2e384d"; // 亮色模式的顏色
+      MDViewer.style.mode = "dark";
     } else {
       body.classList.remove("light");
       body.classList.add("dark");
@@ -63,6 +71,7 @@ const default_events = {
       themeToggleButton.classList.remove("fa-sun");
       themeToggleButton.classList.add("fa-moon");
       typewriterText.style.color = "#f3ede7"; // 深色模式的顏色
+      MDViewer.style.mode = "light";
     }
     setTimeout(() => {
       typewriter.start();
