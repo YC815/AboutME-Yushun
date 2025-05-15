@@ -2,6 +2,19 @@
     {
         "type": "link",
         "title": {
+            "zh": "遠望地平線 新聞網頁",
+            "en": "Far Horizon News Website"
+        },
+        "subtitle": {
+            "zh": "遠望地平線的官方新聞網頁",
+            "en": "Official news website of Far Horizon"
+        },
+        "href": "https://fhn.vercel.app",
+        "image": "https://opengraph.githubassets.com/1/YC815/fhn"
+    },
+    {
+        "type": "link",
+        "title": {
             "zh": "津美妙後台系統",
             "en": "JMM Backend\nSystem"
         },
