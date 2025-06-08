@@ -1,0 +1,181 @@
+.contact-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.contact-card {
+  background-color: var(--card-bg, #ffffff);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: var(--text-color, #1f2937);
+}
+
+.contact-card-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border-color, #e5e7eb);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-card-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contact-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--primary-color, #3b82f6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.contact-card-title h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color, #1f2937);
+}
+
+.contact-card-title p {
+  margin: 0.25rem 0 0;
+  color: var(--text-muted, #6b7280);
+  font-size: 0.875rem;
+}
+
+.contact-card-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted, #6b7280);
+  padding: 0.5rem;
+  transition: color 0.2s;
+}
+
+.contact-card-close:hover {
+  color: var(--text-color, #1f2937);
+}
+
+.contact-card-content {
+  padding: 1rem;
+}
+
+.contact-item {
+  padding: 1rem 0;
+}
+
+.contact-platform {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.contact-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.contact-icon img {
+  width: 20px;
+  height: 20px;
+}
+
+.contact-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-radius: 6px;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  color: var(--text-color, #1f2937);
+}
+
+.contact-button:hover {
+  border-color: var(--primary-color, #3b82f6);
+  background-color: var(--hover-color, #f3f4f6);
+}
+
+.contact-platform-name {
+  font-weight: 500;
+}
+
+.contact-id {
+  color: var(--text-muted, #6b7280);
+  font-size: 0.875rem;
+}
+
+.contact-copy {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--text-muted, #6b7280);
+  transition: color 0.2s;
+}
+
+.contact-copy:hover {
+  color: var(--primary-color, #3b82f6);
+}
+
+.contact-description {
+  color: var(--text-muted, #6b7280);
+  font-size: 0.875rem;
+  margin-left: 3.5rem;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color, #e5e7eb);
+  margin: 0.5rem 0;
+}
+
+/* 亮色主題 */
+:root {
+  --card-bg: #ffffff;
+  --text-color: #1f2937;
+  --text-muted: #6b7280;
+  --border-color: #e5e7eb;
+  --hover-color: #f3f4f6;
+  --primary-color: #3b82f6;
+}
+
+/* 深色主題 - 使用 Tailwind stone 色系 */
+.dark {
+  --card-bg: #1c1917; /* stone-900 */
+  --text-color: #fafaf9; /* stone-50 */
+  --text-muted: #a8a29e; /* stone-400 */
+  --border-color: #44403c; /* stone-700 */
+  --hover-color: #292524; /* stone-800 */
+  --primary-color: #78716c; /* stone-500 */
+}
